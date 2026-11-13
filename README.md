@@ -62,8 +62,6 @@ Information from month *t* is used to predict the lithium carbonate price in mon
 
 ## Methods
 
-## Methods
-
 ### Data preparation and feature engineering
 
 The monthly dataset is cleaned and prepared by identifying the selected lithium carbonate price as the forecasting target, removing duplicate target representations and faulty cobalt data, and selecting numeric explanatory variables.
