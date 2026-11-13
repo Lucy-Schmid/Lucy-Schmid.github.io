@@ -8,19 +8,12 @@ SQM share price (USD/ADR),90,119,2019-05-01,2026-10-01,43.1
 Tesla share price (USD/share),90,119,2019-05-01,2026-10-01,43.1
 LME nickel price (USD/metric tonne),90,119,2019-05-01,2026-10-01,43.1
 LME copper price (USD/metric tonne),90,119,2019-05-01,2026-10-01,43.1
-OLD - faulty cobalt settlement series (constant; excluded),90,119,2019-05-01,2026-10-01,43.1
 LME lithium hydroxide price (USD/metric tonne),63,146,2021-08-01,2026-10-01,30.1
 "China GDP (100 million CNY, constant 2025 prices)",90,119,2019-05-01,2026-10-01,43.1
 "US GDP (USD billion, current prices)",90,119,2019-05-01,2026-10-01,43.1
 CNY/USD exchange-rate series (source quote),90,119,2019-05-01,2026-10-01,43.1
 China industrial production index (prior year = 100),82,127,2019-05-01,2026-09-01,39.2
 US CPI (1982–84 = 100),89,120,2019-05-01,2026-10-01,42.6
-China pure EV sales (units),90,119,2019-05-01,2026-10-01,43.1
-China lithium-ion battery production (source units),59,150,2019-05-01,2025-03-01,28.2
-Japan lithium battery inventory (thousands),88,121,2019-05-01,2026-08-01,42.1
-China LFP power battery sales (thousand kWh),54,155,2019-06-01,2026-09-01,25.8
-Japan lithium battery shipments (thousands),88,121,2019-05-01,2026-08-01,42.1
-Japan lithium battery production (thousands),88,121,2019-05-01,2026-08-01,42.1
 China spot price open (CNY/t) - CSV,186,23,2009-06-01,2024-11-01,89.0
 China spot price high (CNY/t) - CSV,186,23,2009-06-01,2024-11-01,89.0
 China spot price low (CNY/t) - CSV,186,23,2009-06-01,2024-11-01,89.0
@@ -33,4 +26,4 @@ China spot price change (%) - CSV,186,23,2009-06-01,2024-11-01,89.0
 "Japan, Import Prices, Yen Basis, Lithium Carbonates, Index, 2020 = 100",201,8,2010-01-01,2026-09-01,96.2
 "China, Pure Electric Vehicle Sales",117,92,2017-01-01,2026-10-01,56.0
 "China, Lithium Ion Battery Production",165,44,2009-06-01,2025-03-01,78.9
-LME cobalt cash price (USD/metric tonne) - updated Datastream,197,12,2010-06-01,2026-10-01,94.3
+LME cobalt cash price (USD/metric tonne),197,12,2010-06-01,2026-10-01,94.3

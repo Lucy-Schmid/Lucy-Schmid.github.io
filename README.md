@@ -20,70 +20,92 @@ A supplementary classification task groups forecast prices into **low**, **mediu
 
 ## Research Questions
 
-1.  Can market indicators help predict the next month's lithium carbonate price?
-2.  How do linear and non-linear regression models compare on data not used for training?
-3.  How can forecast uncertainty be estimated using Gaussian Process Regression and historical forecast errors?
-4.  Can the next month's price be classified into a low, medium, or high price regime?
+1. Can historical lithium carbonate prices and broader market indicators help predict future lithium carbonate prices at 1-, 3-, 6-, and 12-month forecasting horizons?
+2. How do univariate and multivariate forecasting models compare in their ability to predict lithium carbonate prices on unseen data?
+3. How does reducing predictor complexity and tuning model hyperparameters using time-series cross-validation affect forecasting performance and model generalization?
+4. How can forecast uncertainty be estimated using historical prediction errors and approximate prediction intervals?
+5. Can the next month's lithium carbonate price be classified into a low, medium, or high price regime using historical price information?
 
 ## Data and Features
 
+The consolidated dataset contains monthly observations of lithium carbonate prices and related commodity, financial, battery-market, and macroeconomic indicators. The forecasting workflow uses the selected Chinese lithium carbonate spot price as the target variable:
+
+Target: Selected lithium carbonate price (CNY/t).
+
+The univariate models use historical lithium carbonate prices as their only predictors, incorporating the previous 12 months of price observations.
 The consolidated dataset contains monthly observations. The current modeling workflow uses:
 
 -   Current selected lithium carbonate price
--   Albemarle share price
--   LME copper price
--   LME cobalt cash price (updated Datastream series)
+-   Lithium hydroxide prices
+-   LME copper prices
+-   Updated LME cobalt cash prices
+-   LME nickel prices
+-   Tesla, Albemarle and SQM share prices
 -   CNY/USD exchange rate
+-   China and U.S. macroeconomic indicators
+-   Electric vehicle and battery-market indicators
+-   Japanese battery production, shipments, and inventory indicators
+-   Other available commodity and lithium-market indicators
+
+The multivariate predictor selection requires at least 60 non-missing monthly observations for each base predictor. The three shorter-history Japanese battery series for inventory, shipments, and production are excluded because they duplicate their corresponding longer-history series over their overlapping observations. The longer-history versions are retained.
+
+The Japanese lithium carbonate import-price index is evaluated separately as an optional additional predictor. This series is an import-price index (2020 = 100), rather than an absolute spot price in CNY/t.
+
+To reduce model complexity and potential overfitting, the multivariate models use three months of historical lagged values for the target and explanatory variables. The univariate models retain 12 months of historical target-price lags.
+
+Information available in previous months is used to predict future lithium carbonate prices. Missing predictor values are handled through median imputation within the model pipelines, with imputation fitted using training data only. Missing target observations are not imputed.
+
+The dataset is divided chronologically into training and testing periods, preserving the time order of observations. The final test period is reserved for evaluating model performance on unseen data.
+
 
 Information from month *t* is used to predict the lithium carbonate price in month *t + 1*. Rows with missing values in the selected predictors or next-month target are excluded rather than automatically interpolated. Consequently, the modeling sample is smaller than the original consolidated dataset.
 
 ## Methods
 
+## Methods
+
 ### Data preparation and feature engineering
 
--   Load and sort monthly observations by date.
--   Select the target and market-indicator features.
--   Create a one-month-ahead target.
--   Remove rows that do not contain the required observations.
+The monthly dataset is cleaned and prepared by identifying the selected lithium carbonate price as the forecasting target, removing duplicate target representations and faulty cobalt data, and selecting numeric explanatory variables.
 
-### Regression models
+Predictors are screened based on historical data availability, requiring at least 60 non-missing monthly observations. Duplicate Japanese battery indicators are consolidated by retaining the longer-history series.
 
-The notebook compares:
+Lagged features are generated to capture historical price and market relationships. The univariate models use 12 months of historical target-price observations, while the multivariate models use three months of historical target-price and explanatory-variable observations.
 
--   Multiple Linear Regression
--   K-Nearest Neighbors Regression
--   Random Forest Regression
--   Gradient Boosting Regression
--   Gaussian Process Regression (GPR)
+### Model development and comparison
 
-Selected model hyperparameters are tuned using `GridSearchCV` and chronological `TimeSeriesSplit` cross-validation. A chronological train/test split holds out later observations for final evaluation.
+Several algorithms are evaluated:
+
+- Linear Regression
+- K-Nearest Neighbors (KNN)
+- Support Vector Regression (SVR)
+- Random Forest Regression
+- Gradient Boosting Regression
+- Gaussian Process Regression (GPR)
+
+To reduce overfitting, model complexity is constrained through hyperparameter settings, including tree depth, minimum leaf size, number of neighbors, and learning rate. Hyperparameters are tuned using chronological time-series cross-validation within the training data.
+
+Univariate and multivariate models are evaluated at 1-, 3-, 6-, and 12-month forecasting horizons.
+
+### Model evaluation
+
+Model performance is evaluated using:
+
+- Mean Absolute Error (MAE)
+- Root Mean Squared Error (RMSE)
+- Coefficient of Determination (R²)
+
+The models are evaluated on a final chronological test set that is not used during hyperparameter selection.
 
 ### Forecast uncertainty
 
-Two approaches are explored:
+Forecast uncertainty is estimated using historical model residuals to construct approximate prediction intervals. Empirical interval coverage is compared with the nominal 95% target to assess how well the intervals capture actual prices.
 
-1.  **Gaussian Process Regression:** produces a predictive mean and
-    standard deviation, used to construct an approximate 95% predictive
-    interval.
-2.  **Historical rolling-origin errors:** estimates an empirical
-    forecast-error range from sequential predictions made using only
-    earlier observations.
+### Price regime classification
 
-These are model-based uncertainty estimates, not guarantees.
+The next-month lithium carbonate price is also classified into low, medium, and high price regimes. The categories are defined using the 33rd and 67th percentiles of the training-period price distribution to avoid using future test information when establishing the thresholds.
 
-### Price-regime classification
-
-A supplementary classification task assigns the next month's price to
-one of three categories:
-
--   **Low**
--   **Medium**
--   **High**
-
-The thresholds are calculated from the training-period target
-distribution (terciles), avoiding use of held-out test observations to
-define the classes. Logistic Regression and Random Forest classification
-are compared.
+Logistic Regression and Random Forest classifiers are evaluated using accuracy, macro F1-score, classification reports, and confusion matrices.
 
 ## Repository Contents
 

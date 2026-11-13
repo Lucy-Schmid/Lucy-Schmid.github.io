@@ -1,9 +1,9 @@
-Feature set,Horizon (months),Model,MAE,RMSE,R2
-Multivariate — with Japan index,1,Gradient Boosting,54997.41064733442,59487.841531249156,-0.06689941781771891
-Multivariate — with Japan index,3,SVR,74904.78989806674,94485.76594701644,-1.6915337616196724
-Multivariate — with Japan index,6,SVR,71910.87214446107,90939.90182432867,-1.6686539717751545
-Multivariate — with Japan index,12,SVR,61404.789998765744,78238.58270123632,-1.6039918097629258
-Multivariate — without Japan index,1,Gradient Boosting,82480.68783261173,87420.56545848033,-1.3040626208308366
-Multivariate — without Japan index,3,SVR,74905.88730211265,94486.57087373384,-1.6915796203083762
-Multivariate — without Japan index,6,SVR,71912.75411104596,90941.34512095059,-1.668738680241952
-Multivariate — without Japan index,12,SVR,61401.81058550197,78236.24398284667,-1.6038361343327203
+Feature set,Horizon (months),Model,CV RMSE,Best parameters,MAE,RMSE,R2
+Multivariate — with Japan index,1,SVR,103243.93877502429,"{'svr__C': 10.0, 'svr__epsilon': 0.1}",75543.92129740222,94991.35261893709,-1.720415241602947
+Multivariate — with Japan index,3,SVR,103232.28589931951,"{'svr__C': 10.0, 'svr__epsilon': 0.1}",75050.19444671526,94599.21195400505,-1.6980009170279367
+Multivariate — with Japan index,6,Gradient Boosting,94851.64489675392,"{'gradientboostingregressor__learning_rate': 0.01, 'gradientboostingregressor__max_depth': 1, 'gradientboostingregressor__n_estimators': 100}",81797.95009182283,88472.15416977585,-1.5257857385930778
+Multivariate — with Japan index,12,Gradient Boosting,99622.92847163056,"{'gradientboostingregressor__learning_rate': 0.01, 'gradientboostingregressor__max_depth': 3, 'gradientboostingregressor__n_estimators': 50}",42216.11989682067,52112.00015590166,-0.15524247907597677
+Multivariate — without Japan index,1,Gradient Boosting,78739.60873021388,"{'gradientboostingregressor__learning_rate': 0.05, 'gradientboostingregressor__max_depth': 2, 'gradientboostingregressor__n_estimators': 150}",63256.37891551292,76730.59642524605,-0.7750238946627868
+Multivariate — without Japan index,3,SVR,103242.04298735142,"{'svr__C': 10.0, 'svr__epsilon': 1.0}",75048.98373717151,94597.893105838,-1.6979256895775792
+Multivariate — without Japan index,6,Gradient Boosting,94626.10964811809,"{'gradientboostingregressor__learning_rate': 0.01, 'gradientboostingregressor__max_depth': 1, 'gradientboostingregressor__n_estimators': 100}",78537.13038877491,85525.76356365441,-1.3603544413592745
+Multivariate — without Japan index,12,Gradient Boosting,100808.13315230011,"{'gradientboostingregressor__learning_rate': 0.01, 'gradientboostingregressor__max_depth': 1, 'gradientboostingregressor__n_estimators': 50}",47898.91638329059,54400.48471176828,-0.25893469780471867
