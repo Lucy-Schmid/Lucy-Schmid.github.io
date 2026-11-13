@@ -1,6 +1,4 @@
-# Lucy-Schmid.github.io
-Data Science Project - Lithium Forecasting
-# Lucy Schmid — Data Science Projects
+# Lucy Schmid — Data Science Project
 Chemical Engineering, University of Florida
 ---
 ## Term Project: Predicting Lithium Carbonate Prices Using Machine Learning: A Comparison of Regression Algorithms and Predictive Uncertainty
