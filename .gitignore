@@ -1,0 +1,16 @@
+# Jupyter clutter
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+# Data files - keep these OFF GitHub
+data/
+*.csv
+*.xlsx
+*.h5
+*.nc
+*.pkl
+# Credentials - never upload these
+*.key
+.env
+# HiPerGator job files
+slurm-*.out
