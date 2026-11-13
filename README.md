@@ -87,18 +87,34 @@ are compared.
 
 ## Repository Contents
 
-Suggested repository structure:
+Repository structure:
 
-``` text
-lithium-carbonate-forecasting/
+Lucy-Schmid.github.io/
+│
+├── Data/
+│   └── lithium_consolidated_monthly.csv
+│
+├── Results/
+│   ├── figures/
+│   └── tables/
+│
+├── notebooks/
+│   ├── Cleaning and Prep/
+│   │   ├── 01_Data_Cleaning_and_Exploration.ipynb
+│   │   └── 02_Correlation_and_Feature_Selection.ipynb
+│   │
+│   └── Modelling and Comparison/
+│       ├── 03_Univariate_Forecasting.ipynb
+│       ├── 04_Multivariate_Forecasting.ipynb
+│       └── 05_Model_Comparison_and_Uncertainty.ipynb
+│
+├── src/
+│   ├── features.py
+│   └── utils/
+│       └── logger.py
 │
 ├── README.md
-├── Lithium_Carbonate_Forecasting.ipynb
-├── data/
-│   └── [`lithium_data_consolidated.csv`]
-└── figures/
-    └── [optional saved plots]
-```
+└── requirements.txt
 
 
 ## How to Run
