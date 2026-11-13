@@ -3,9 +3,8 @@ Data Science Project - Lithium Forecasting
 # Lucy Schmid — Data Science Projects
 Chemical Engineering, University of Florida
 ---
-## Project 1: Predicting Reactor Yield
-**The question.** Can we predict yield from temperature
-and residence time without running every experiment?
+## Term Project: Predicting Lithium Carbonate Prices Using Machine Learning: A Comparison of Regression Algorithms and Predictive Uncertainty
+**The question.** How accurately can machine learning algorithms forecast lithium carbonate prices using historical commodity prices and macroeconomic indicators, and how does predictive uncertainty vary across market conditions?
 **The data.** 142 pilot-plant runs collected over 2024,
 with 3 input variables and 1 measured output.
 **What I did.**
